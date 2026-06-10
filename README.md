@@ -24,3 +24,5 @@ This is a static GitHub Pages build. Local demo accounts are good for testing th
 Expected Pages URL after deployment:
 
 https://randyjohnson9515-png.github.io/snapqr/
+
+Deployment trigger updated: 2026-06-10.
