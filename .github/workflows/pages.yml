@@ -1,4 +1,4 @@
-name: Deploy SnapQR to GitHub Pages
+name: Force Deploy Dynamic QR Frontend
 
 on:
   push:
@@ -11,24 +11,24 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: github-pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout latest site files
         uses: actions/checkout@v4
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+      - name: Upload site from repository root
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy to GitHub Pages
+      - name: Deploy latest SnapQR Dynamic UI
         id: deployment
         uses: actions/deploy-pages@v4
